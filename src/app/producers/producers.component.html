@@ -1,0 +1,10 @@
+<h2>List of Producers</h2>
+<ul class="producers">
+  <li *ngFor="let producer of producers">
+    <button [class.selected]="producer === selectedProducer" type="button" (click)="onSelect(producer)">
+      <span class="badge">{{producer.id}}</span>
+      <span class="name">{{producer.name}}</span>
+    </button>
+  </li>
+</ul>
+<app-producer-detail [selectedProducer]="selectedProducer"></app-producer-detail>

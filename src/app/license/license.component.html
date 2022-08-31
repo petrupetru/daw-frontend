@@ -1,0 +1,8 @@
+<h2>Shop</h2>
+<ul class="license">
+  <li *ngFor="let license of licenses">
+    <a routerLink="/detail/{{license.id}}">
+        <span class="badge">{{license.name}}</span>{{license.key}}
+    </a>
+  </li>
+</ul>
