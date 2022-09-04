@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { License } from './interfaces/license';
 import { MessagesService } from './messages.service';
-import { LICENSES } from './mock-data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 

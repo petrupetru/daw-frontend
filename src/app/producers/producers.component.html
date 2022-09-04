@@ -1,3 +1,26 @@
+<h2>Add Producer</h2>
+<form [formGroup] = "createProducerForm" (ngSubmit) = "createProducer()">
+  <p class="label">Id</p>
+  <input formControlName = "id" placeholder="id" type="text">
+  <p class="label">Name</p>
+  <input formControlName = "name" placeholder="name" type="text">
+  <button type="submit" (click)="refresh()">Add</button>
+
+  <h2>Update Producer</h2>
+  <form [formGroup] = "updateProducerForm" (ngSubmit) = "updateProducer()">
+    <p class="label">Id</p>
+    <input formControlName = "id" placeholder="id" type="text">
+    <p class="label">Name</p>
+    <input formControlName = "name" placeholder="name" type="text">
+    <button type="submit" (click)="refresh()">Update</button>
+
+<h2>Delete Producer</h2>
+<form [formGroup] = "deleteProdForm" (ngSubmit) = "deleteProd()">
+  <p class="label">Id</p>
+  <input formControlName = "id" placeholder="id" type="text">
+  <button type="submit" (click)="refresh()">Delete</button>
+</form>
+
 <h2>List of Producers</h2>
 <ul class="producers">
   <li *ngFor="let producer of producers">
@@ -8,3 +31,6 @@
   </li>
 </ul>
 <app-producer-detail [selectedProducer]="selectedProducer"></app-producer-detail>
+
+
+

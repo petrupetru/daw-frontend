@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
 
   onRegisterAdmin(){
     var newUser = new Register(this.registrationFormAdmin.value as Register);
-    newUser.role = "BasicUser";
+    newUser.role = "Admin";
 
     this.authService.register(newUser).subscribe();
   }

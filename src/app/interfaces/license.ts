@@ -3,4 +3,5 @@ export interface License{
     name: string;
     key: string; //will be the price
     producerId: string;
+    producer: string;
 }

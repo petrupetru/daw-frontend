@@ -1,8 +1,8 @@
 <div *ngIf="license">
     <h2>{{license.name | uppercase}} Details</h2>
     <div>
-      <label for="license-name">License name: </label>
-      <input id="license-name" [(ngModel)]="license.name" placeholder="name">
+      <div>name: {{license.name}}</div>
       <div>price: {{license.key | price}}</div>
+      <div>producer: {{license.producer}}</div>
     </div>
   </div>

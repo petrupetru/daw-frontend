@@ -11,7 +11,7 @@ import { ProducersComponent } from './producers/producers.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path: `producers`, component: ProducersComponent},
+  {path: `producers`, component: ProducersComponent, canActivate:[AdminGuardGuard]},
   {path: `licenses`, component: LicenseComponent},
   {path: `detail/:id`, component: LicenseDetailComponent, canActivate: [AuthGuardGuard]},
   {path: ``, component: HomeComponent, canActivate:[AuthGuardGuard]},

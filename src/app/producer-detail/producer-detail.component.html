@@ -1,8 +1,5 @@
 <div *ngIf="selectedProducer">
     <h2>{{selectedProducer.name | uppercase}} Details</h2>
     <div>id: {{selectedProducer.id}}</div>
-    <div>
-      <label for="producer-name">Producer name: </label>
-      <input id="producer-name" [(ngModel)]="selectedProducer.name" placeholder="name">
-    </div>
+    <div>name: {{selectedProducer.name}}</div>
   </div>

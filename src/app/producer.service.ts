@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { Producer } from './interfaces/producer';
 import { MessagesService } from './messages.service';
 import { PRODUCERS } from './mock-data';
@@ -29,16 +29,25 @@ export class ProducerService {
     )
   }
 
+  addProducer( producerData : any) : Observable<any>{
+    return this.http.post<any>(`${this.producersUrl}/create`, producerData);
+    
+  }
+
+  deleteProducer( id : string){
+    var deleteURL = `${this.producersUrl}/delete${id}`;
+    this.http.delete(deleteURL);
+    
+  }
+
+  updateProducer( producerData : any){
+    this.http.put<any>(`${this.producersUrl}/update`, producerData).subscribe();
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-  
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-  
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       this.log(`${operation} failed: ${error.message}`);
-  
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
