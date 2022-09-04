@@ -9,13 +9,14 @@ import { ProducerDetailComponent } from './producer-detail/producer-detail.compo
 import { MessagesComponent } from './messages/messages.component';
 import { LicenseComponent } from './license/license.component';
 import { LicenseDetailComponent } from './license-detail/license-detail.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HighlightDirective } from './highlight.directive';
 import { PricePipe } from './price.pipe';
+import { RetryInterceptor } from './retryInerceptor';
 
 
 @NgModule({
@@ -47,7 +48,11 @@ import { PricePipe } from './price.pipe';
       }
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: RetryInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
