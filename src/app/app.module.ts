@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HighlightDirective } from './highlight.directive';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    HighlightDirective,
     
   ],
   imports: [
