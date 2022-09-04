@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HighlightDirective } from './highlight.directive';
+import { PricePipe } from './price.pipe';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { HighlightDirective } from './highlight.directive';
     RegisterComponent,
     HomeComponent,
     HighlightDirective,
+    PricePipe,
     
   ],
   imports: [
