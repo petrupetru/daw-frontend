@@ -1,0 +1,9 @@
+<h2>Add another admin</h2>
+<form [formGroup] = "registrationFormAdmin" (ngSubmit) = "onRegisterAdmin()">
+    <p class="label">Username</p>
+    <input formControlName = "email" placeholder="Username" type="text">
+    <p class="label">Password</p>
+    <input formControlName = "password" placeholder="Password" type="password">
+    <button type="submit">Register</button>
+
+</form>

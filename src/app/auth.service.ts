@@ -28,12 +28,16 @@ export class AuthService {
 
   login(userData : any) : Observable<any>{
 
-    debugger
+    
     return this.http.post(`${this.authURL}/login`, userData, {responseType: 'text'})
     .pipe(map((response : any) => {
-      if(response?.token){
-        localStorage.setItem('token', response.token);
-        this.router.navigate([`/register`]);
+      if(response){
+        localStorage.setItem('token', response);
+        let jwtData = response.split('.')[1]
+        let decodedJwtJsonData = window.atob(jwtData)
+        let decodedJwtData = JSON.parse(decodedJwtJsonData)
+        localStorage.setItem('role', decodedJwtData.role);
+        this.router.navigate([`/`]);
       }
     }))
   }

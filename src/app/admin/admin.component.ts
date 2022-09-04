@@ -4,13 +4,13 @@ import { AuthService } from '../auth.service';
 import { Register } from '../models/register';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
-  registrationForm = this.fb.group({
+  registrationFormAdmin = this.fb.group({
     email : ['', Validators.required],
     password: ['']
   });
@@ -20,13 +20,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onRegister(){
-    var newUser = new Register(this.registrationForm.value as Register);
+  onRegisterAdmin(){
+    var newUser = new Register(this.registrationFormAdmin.value as Register);
     newUser.role = "BasicUser";
 
     this.authService.register(newUser).subscribe();
   }
-
-  
 
 }

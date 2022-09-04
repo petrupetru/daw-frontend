@@ -17,6 +17,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { HighlightDirective } from './highlight.directive';
 import { PricePipe } from './price.pipe';
 import { RetryInterceptor } from './retryInerceptor';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { RetryInterceptor } from './retryInerceptor';
     HomeComponent,
     HighlightDirective,
     PricePipe,
+    AdminComponent,
     
   ],
   imports: [
