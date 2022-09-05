@@ -11,6 +11,8 @@ import { licenseModel } from './models/licenseModel';
 export class CartService {
   private cartsURL = 'https://localhost:5001/api/Cart'; 
   curentCart?: cartModel;
+  userCart?: cartModel;
+
 
   constructor(
     private http: HttpClient,
@@ -43,6 +45,11 @@ export class CartService {
     var deleteURL = `${this.cartsURL}/delete${id}`;
     this.http.delete(deleteURL).subscribe();
     
+  }
+
+  addToCart(licenseid: string, cartid : string)
+  {
+    this.http.post<any>(`${this.cartsURL}/addtocart${licenseid}/${cartid}`, null).subscribe();
   }
 
 }

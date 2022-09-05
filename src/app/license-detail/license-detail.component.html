@@ -5,4 +5,8 @@
       <div>price: {{license.key | price}}</div>
       <div>producer: {{license.producer}}</div>
     </div>
+<form [formGroup] = "add" (ngSubmit) = "addToCart()">
+  <button type="submit" >Add to Cart</button>
+
+</form>
   </div>

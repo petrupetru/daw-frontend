@@ -3,6 +3,8 @@ import { License } from '../interfaces/license';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { LicenseService } from '../license.service'; 
+import { CartService } from '../cart.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-license-detail',
@@ -11,11 +13,15 @@ import { LicenseService } from '../license.service';
 })
 export class LicenseDetailComponent implements OnInit {
   license?: License;
+  add = this.fb.group({
+  });
 
   constructor(
     private route: ActivatedRoute,
     private licenseService: LicenseService,
-    private location: Location
+    private cartService : CartService,
+    private location: Location,
+    private fb : FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +31,10 @@ export class LicenseDetailComponent implements OnInit {
     const id = String(this.route.snapshot.paramMap.get('id'));
     this.licenseService.getLicense(id)
       .subscribe(license => this.license = license);
+  }
+
+  addToCart(): void{
+    this.cartService.addToCart(this.license?.id || "", localStorage.getItem("token") || "");
   }
   
 
