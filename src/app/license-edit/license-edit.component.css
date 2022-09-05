@@ -1,16 +1,15 @@
-
-.producers {
+.licenses {
     margin: 0 0 2em 0;
     list-style-type: none;
     padding: 0;
     width: 15em;
   }
   
-  .producers li {
+  .licenses li {
     display: flex;
   }
   
-  .producers button {
+  .licenses button {
     flex: 1;
     cursor: pointer;
     position: relative;
@@ -24,33 +23,33 @@
     height: 1.8em;
   }
   
-  .producers button:hover {
+  .licenses button:hover {
     color: #2c3a41;
     background-color: #e6e6e6;
     left: .1em;
   }
   
-  .producers button:active {
+  .licenses button:active {
     background-color: #525252;
     color: #fafafa;
   }
   
-  .producers button.selected {
+  .licenses button.selected {
     background-color: black;
     color: white;
   }
   
-  .producers button.selected:hover {
+  .licenses button.selected:hover {
     background-color: #505050;
     color: white;
   }
   
-  .producers button.selected:active {
+  .licenses button.selected:active {
     background-color: black;
     color: white;
   }
   
-  .producers .badge {
+  .licenses .badge {
     display: inline-block;
     font-size: small;
     color: white;
@@ -61,6 +60,6 @@
     border-radius: 4px 0 0 4px;
   }
   
-  .producers .name {
+  .licenses .name {
     align-self: center;
   }

@@ -18,6 +18,9 @@ import { HighlightDirective } from './highlight.directive';
 import { PricePipe } from './price.pipe';
 import { RetryInterceptor } from './retryInerceptor';
 import { AdminComponent } from './admin/admin.component';
+import { LicenseEditComponent } from './license-edit/license-edit.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { interceptorProviders } from './interceptors';
 
 
 @NgModule({
@@ -34,6 +37,7 @@ import { AdminComponent } from './admin/admin.component';
     HighlightDirective,
     PricePipe,
     AdminComponent,
+    LicenseEditComponent,
     
   ],
   imports: [
@@ -50,11 +54,7 @@ import { AdminComponent } from './admin/admin.component';
       }
     })
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS, useClass: RetryInterceptor, multi: true
-    }
-  ],
+  providers: [interceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

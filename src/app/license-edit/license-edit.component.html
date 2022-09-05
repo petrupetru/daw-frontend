@@ -1,0 +1,46 @@
+<h2>Add License</h2>
+<form [formGroup] = "createLicenseForm" (ngSubmit) = "createLicense()">
+  <p class="label">Id</p>
+  <input formControlName = "id" placeholder="id" type="text">
+  <p class="label">Name</p>
+  <input formControlName = "name" placeholder="name" type="text">
+  <p class="label">Price</p>
+  <input formControlName = "key" placeholder="key" type="text">
+  <p class="label">ProducerId</p>
+  <input formControlName = "producerId" placeholder="producerId" type="text">
+  <button type="submit" (click)="refresh()">Add</button>
+
+<h2>Update License</h2>
+  <form [formGroup] = "updateLicenseForm" (ngSubmit) = "updateLicense()">
+    <p class="label">Id</p>
+    <input formControlName = "id" placeholder="id" type="text">
+    <p class="label">Name</p>
+    <input formControlName = "name" placeholder="name" type="text">
+    <p class="label">Price</p>
+    <input formControlName = "key" placeholder="key" type="text">
+    <p class="label">ProducerId</p>
+    <input formControlName = "producerId" placeholder="producerId" type="text">
+    <button type="submit" (click)="refresh()">Update</button>
+
+<h2>Delete License</h2>
+<form [formGroup] = "deleteLicenseForm" (ngSubmit) = "deleteLicense()">
+  <p class="label">Id</p>
+  <input formControlName = "id" placeholder="id" type="text">
+  <button type="submit" (click)="refresh()">Delete</button>
+</form>
+
+<h2>List of Licenses</h2>
+<ul class="licenses">
+  <li *ngFor="let license of licenses">
+    <button [class.selected]="license === selectedLicense" type="button" (click)="onSelect(license)">
+      <span class="badge">Id: {{license.id}}</span>
+      <span class="name">{{license.name}}</span>
+      <span class="badge">Price: {{license.key}}</span>
+    </button>
+  </li>
+</ul>
+
+
+
+
+

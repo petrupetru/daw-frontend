@@ -35,6 +35,18 @@ export class LicenseService {
     )
   }
 
+  addLicense( licenseData : any ) {
+    this.http.post<any>(`${this.licensesUrl}/create`, licenseData).subscribe();
+  }
+
+  deleteLicense( id: string){
+    this.http.delete(`${this.licensesUrl}/delete${id}`).subscribe();
+  }
+
+  updateLicense( licenseData : any){
+    this.http.put<any>(`${this.licensesUrl}/update`, licenseData).subscribe();
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   

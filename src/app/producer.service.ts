@@ -29,14 +29,13 @@ export class ProducerService {
     )
   }
 
-  addProducer( producerData : any) : Observable<any>{
-    return this.http.post<any>(`${this.producersUrl}/create`, producerData);
-    
+  addProducer( producerData : any){
+    this.http.post<any>(`${this.producersUrl}/create`, producerData).subscribe();
   }
 
   deleteProducer( id : string){
     var deleteURL = `${this.producersUrl}/delete${id}`;
-    this.http.delete(deleteURL);
+    this.http.delete(deleteURL).subscribe();
     
   }
 

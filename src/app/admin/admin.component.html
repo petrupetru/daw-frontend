@@ -1,6 +1,9 @@
-<a routerLink="/producers">Producers</a>
 
 
+<nav>
+    <a routerLink="/producers">Edit Producers</a>
+    <a routerLink="/licenseedit">Edit Licenses</a>
+</nav>
 <h2>Add another admin</h2>
 <form [formGroup] = "registrationFormAdmin" (ngSubmit) = "onRegisterAdmin()">
     <p class="label">Username</p>

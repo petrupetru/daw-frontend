@@ -29,7 +29,11 @@ export class ProducersComponent implements OnInit {
   producers? :Producer[] = [];
   selectedProducer?: Producer;
 
-  constructor(private fb : FormBuilder, private producerService : ProducerService, private messagesService : MessagesService) { }
+  constructor(
+    private fb : FormBuilder,
+    private producerService : ProducerService,
+    private messagesService : MessagesService
+      ) { }
 
   ngOnInit(): void {
     this.getProducers();
@@ -42,7 +46,7 @@ export class ProducersComponent implements OnInit {
 
   createProducer(): void{
     var newProducer = new producerModel(this.createProducerForm.value as producerModel);
-    this.producerService.addProducer(newProducer).subscribe();
+    this.producerService.addProducer(newProducer);
   }
 
   updateProducer(): void{
@@ -66,6 +70,6 @@ export class ProducersComponent implements OnInit {
 
   refresh(): void {
     window.location.reload();
-}
+  }
 
 }
