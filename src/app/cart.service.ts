@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { License } from './interfaces/license';
 import { MessagesService } from './messages.service';
 import { cartModel } from './models/cartModel';
 import { licenseModel } from './models/licenseModel';
@@ -22,8 +23,8 @@ export class CartService {
     this.messageService.add(`CartService: ${message}`);
   }
   
-  getLicensesListed( id : string): Observable<licenseModel[]>{
-      return this.http.get<licenseModel[]>(`${this.cartsURL}/Licenses${id}`);
+  getLicensesListed( id : string): Observable<License[]>{
+      return this.http.get<License[]>(`${this.cartsURL}/Licenses${id}`);
   }
 
   getCartById(id : string) : Observable<cartModel>{

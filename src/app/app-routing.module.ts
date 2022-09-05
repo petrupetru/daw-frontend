@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminGuardGuard } from './admin-guard.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuardGuard } from './auth-guard.guard';
+import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { LicenseDetailComponent } from './license-detail/license-detail.component';
 import { LicenseEditComponent } from './license-edit/license-edit.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: `login`, component: LoginComponent},
   {path: `register`, component: RegisterComponent},
   {path: `admin`, component: AdminComponent, canActivate:[AdminGuardGuard]},
-  {path: `licenseedit` ,component: LicenseEditComponent, canActivate:[AdminGuardGuard]}
+  {path: `licenseedit` ,component: LicenseEditComponent, canActivate:[AdminGuardGuard]},
+  {path: `cart`, component: CartComponent, canActivate:[AuthGuardGuard]}
 ];
 
 @NgModule({

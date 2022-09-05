@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
+import { License } from '../interfaces/license';
+import { licenseModel } from '../models/licenseModel';
 
 
 @Component({
@@ -9,11 +11,17 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent implements OnInit {
 
+  licenses? : License[] = [];
   constructor(private cartService : CartService) { }
 
   ngOnInit(): void {
+    this.getLicensesListed()
   }
 
-  
+  getLicensesListed(){
+    this.cartService.getLicensesListed(localStorage.getItem("token") || "")
+    .subscribe(licenses => this.licenses = licenses)
+
+  }
 
 }

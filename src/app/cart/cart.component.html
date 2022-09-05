@@ -1,1 +1,7 @@
-<p>cart works!</p>
+<h2>Your cart</h2>
+<ul class="cart">
+  <li *ngFor="let license of licenses">
+      <span class="name">{{license.name}}<br></span>
+      <span class="badge">Price: {{license.key}}</span>
+  </li>
+</ul>
