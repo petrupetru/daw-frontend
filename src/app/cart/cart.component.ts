@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { CartService } from '../cart.service';
 import { License } from '../interfaces/license';
+import { MessagesService } from '../messages.service';
+import { cartModel } from '../models/cartModel';
 import { licenseModel } from '../models/licenseModel';
 
 
@@ -10,12 +13,17 @@ import { licenseModel } from '../models/licenseModel';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  remove = this.fb.group({});
 
   licenses? : License[] = [];
-  constructor(private cartService : CartService) { }
+  cartId : string = "";
+  constructor(private cartService : CartService,
+    private fb : FormBuilder,
+    private ms : MessagesService) { }
 
   ngOnInit(): void {
     this.getLicensesListed()
+    this.cartId = localStorage.getItem("token") || "";
   }
 
   getLicensesListed(){
@@ -23,5 +31,19 @@ export class CartComponent implements OnInit {
     .subscribe(licenses => this.licenses = licenses)
 
   }
+
+  removeLicense(licenseId : string, cartId : string){
+    this.cartService.remove(licenseId, cartId);
+    this.log(`license ${licenseId} removed from cart`)
+  }
+
+  private log(message: string) {
+    this.ms.add(`CartService: ${message}`);
+  }
+
+  refresh(): void {
+    window.location.reload();
+  }
+
 
 }

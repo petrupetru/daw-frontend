@@ -3,5 +3,8 @@
   <li *ngFor="let license of licenses">
       <span class="name">{{license.name}}<br></span>
       <span class="badge">Price: {{license.key}}</span>
+      <form [formGroup] = "remove" (ngSubmit) = "removeLicense(license.id, cartId)">
+        <button type="submit" (click)="refresh()">Delete</button>
+      </form>
   </li>
 </ul>

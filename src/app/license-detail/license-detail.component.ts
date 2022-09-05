@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { LicenseService } from '../license.service'; 
 import { CartService } from '../cart.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MessagesService } from '../messages.service';
 
 @Component({
   selector: 'app-license-detail',
@@ -21,8 +22,13 @@ export class LicenseDetailComponent implements OnInit {
     private licenseService: LicenseService,
     private cartService : CartService,
     private location: Location,
-    private fb : FormBuilder
+    private fb : FormBuilder,
+    private ms : MessagesService
   ) {}
+
+  private log(message: string) {
+    this.ms.add(`${message}`);
+  }
 
   ngOnInit(): void {
     this.getLicense();
@@ -34,6 +40,7 @@ export class LicenseDetailComponent implements OnInit {
   }
 
   addToCart(): void{
+    this.log(`added to cart license ${this.license?.id || ""}`)
     this.cartService.addToCart(this.license?.id || "", localStorage.getItem("token") || "");
   }
   

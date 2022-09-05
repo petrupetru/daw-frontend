@@ -53,4 +53,10 @@ export class CartService {
     this.http.post<any>(`${this.cartsURL}/addtocart${licenseid}/${cartid}`, null).subscribe();
   }
 
+  remove(licenseid: string, cartid : string)
+  {
+    this.http.delete(`${this.cartsURL}/removefromcart${licenseid}/${cartid}`)
+    .subscribe();
+  }
+
 }
