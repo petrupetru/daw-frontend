@@ -1,3 +1,9 @@
+# Credentials
+Admin :
+username : test@admin.com
+password : Admin22!
+
+
 # DawFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
