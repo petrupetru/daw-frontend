@@ -1,6 +1,6 @@
 # Credentials
 Admin :
-username : test@admin.com
-password : Admin22!
+username : "test@admin.com", 
+password : "Admin22!"
 
 
