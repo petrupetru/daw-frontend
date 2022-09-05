@@ -26,6 +26,7 @@ export class ProducersComponent implements OnInit {
     id : ['', Validators.required]
   });
 
+  cnt : number = 0;
   producers? :Producer[] = [];
   selectedProducer?: Producer;
 
@@ -66,10 +67,16 @@ export class ProducersComponent implements OnInit {
   onSelect(producer: Producer): void {
     this.selectedProducer = producer
     this.messagesService.add(`producerComponent : producer id=${producer.id} selected`);
+    this.countLicenses(this.selectedProducer.id);
   }
 
   refresh(): void {
     window.location.reload();
+  }
+
+  countLicenses(id : string): number{
+    this.producerService.countLicenses(id).subscribe(count => this.cnt = count);
+    return this.cnt;
   }
 
 }

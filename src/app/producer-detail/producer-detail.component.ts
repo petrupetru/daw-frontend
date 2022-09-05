@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Producer } from '../interfaces/producer';
+import { ProducerService } from '../producer.service';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { Producer } from '../interfaces/producer';
 export class ProducerDetailComponent implements OnInit {
   @Input() selectedProducer? : Producer;
 
-  constructor() { }
+
+  constructor(private producerService : ProducerService) { }
 
   ngOnInit(): void {
   }
 
+ 
 }

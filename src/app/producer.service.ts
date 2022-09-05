@@ -43,6 +43,10 @@ export class ProducerService {
     this.http.put<any>(`${this.producersUrl}/update`, producerData).subscribe();
   }
 
+  countLicenses(id : string) : Observable<any>{
+    return this.http.get(`${this.producersUrl}/count${id}`);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
