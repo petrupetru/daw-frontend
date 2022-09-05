@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { CartService } from '../cart.service';
 import { Login } from '../models/login';
 import { Register } from '../models/register';
 
@@ -16,16 +17,18 @@ export class LoginComponent implements OnInit {
     password: ['']
   });
 
-  constructor(private fb : FormBuilder, private authService : AuthService) { }
+  constructor(private fb : FormBuilder,
+               private authService : AuthService,
+               private cartService : CartService) { }
 
   ngOnInit(): void {
   }
 
-  onLogin(){
-
+  onLogin() : void{
     var user = new Login(this.loginForm.value as Login);
-
     this.authService.login(user).subscribe();
+    
+
   }
 
 

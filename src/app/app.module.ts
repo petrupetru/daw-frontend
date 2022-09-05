@@ -21,6 +21,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LicenseEditComponent } from './license-edit/license-edit.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { interceptorProviders } from './interceptors';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { interceptorProviders } from './interceptors';
     PricePipe,
     AdminComponent,
     LicenseEditComponent,
+    CartComponent,
     
   ],
   imports: [

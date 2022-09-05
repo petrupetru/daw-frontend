@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map, Observable } from 'rxjs';
+import { CartService } from './cart.service';
 import { LoginComponent } from './login/login.component';
 
 @Injectable({
@@ -16,7 +17,10 @@ export class AuthService {
     headers : new HttpHeaders({ 'Content-Type' : 'application/json'})
   };
 
-  constructor(private http : HttpClient, private router : Router, private jwtService : JwtHelperService) { }
+  constructor(private http : HttpClient,
+     private router : Router,
+      private jwtService : JwtHelperService,
+      private cartService : CartService) { }
 
   register( userData : any) : Observable<any>{
     return this.http.post<any>(`${this.authURL}/sign-up`, userData)
@@ -27,8 +31,7 @@ export class AuthService {
   }
 
   login(userData : any) : Observable<any>{
-
-    
+    localStorage.setItem('id', userData.email);
     return this.http.post(`${this.authURL}/login`, userData, {responseType: 'text'})
     .pipe(map((response : any) => {
       if(response){
@@ -37,6 +40,11 @@ export class AuthService {
         let decodedJwtJsonData = window.atob(jwtData)
         let decodedJwtData = JSON.parse(decodedJwtJsonData)
         localStorage.setItem('role', decodedJwtData.role);
+        localStorage.setItem('UserId', decodedJwtData.UserId);
+
+
+        this.cartService.addCart(response, decodedJwtData.UserId);
+
         this.router.navigate([`/`]);
       }
     }))
@@ -48,7 +56,13 @@ export class AuthService {
   }
 
   logout(){
+    this.cartService.deleteCart(localStorage.getItem("token") || "");
     localStorage.removeItem(`token`);
+    localStorage.removeItem(`id`);
+    localStorage.removeItem(`role`);
+    localStorage.removeItem(`UserId`);
+
+
     this.router.navigate([`/login`]);
   }
 }
